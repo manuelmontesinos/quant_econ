@@ -2,7 +2,7 @@
 A collection of computational methods for conducting research in economics and finance. Files included:
 
 ## The Static General Equilibrium Model
-- Social planner solution to the static general equilibrium model: [planner_static_1.R.](https://github.com/montesinosmv/quant_econ/blob/master/static_ge_model/planner_static_1.R)
+- Social planner solution to the static general equilibrium model: [planner_static_1.R](https://github.com/montesinosmv/quant_econ/blob/master/static_ge_model/planner_static_1.R) (R), [planner_static_1.py](https://github.com/manuelmontesinos/quant_econ/blob/main/static_ge_model/planner_static_1.py) (Python).
 - Market solution to the static general equilibrium model: [market_static_1.R](https://github.com/montesinosmv/quant_econ/blob/master/static_ge_model/market_static_1.R)
 
 ## Introduction to Dynamic Programming
