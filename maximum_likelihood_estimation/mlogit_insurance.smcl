@@ -1,0 +1,78 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}mlogit_insurance
+       {txt}log:  {res}/Users/montesinos/Documents/GitHub/quant_econ/maximum_likelihood_estimation/mlogit_insurance.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}19 Jul 2021, 13:50:44
+{txt}
+{com}. 
+.         di " "
+{res} 
+{txt}
+{com}.         di " "
+{res} 
+{txt}
+{com}.         di "    ====> ESTIMATION OF A MULTINOMIAL LOGIT MODEL OF INSURANCE CHOICE:", as text 
+{res}    ====> ESTIMATION OF A MULTINOMIAL LOGIT MODEL OF INSURANCE CHOICE: 
+{txt}
+{com}.         di " "  
+{res} 
+{txt}
+{com}. 
+.         ******* Load the data 
+.         
+.         use "https://www.stata-press.com/data/r17/sysdsn1.dta", clear
+{txt}(Health insurance data)
+
+{com}.         
+.         ******* Estimate the model
+.         
+.         mlogit insure nonwhite male age
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-555.85446}  
+Iteration 1:{space 3}log likelihood = {res:-545.60089}  
+Iteration 2:{space 3}log likelihood = {res:-545.58328}  
+Iteration 3:{space 3}log likelihood = {res:-545.58328}  
+{res}
+{txt}Multinomial logistic regression{col 49}Number of obs{col 67}= {res}       615
+{txt}{col 49}LR chi2({res}6{txt}){col 67}= {res}     20.54
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0022
+{txt}Log likelihood = {res}-545.58328{txt}{col 49}Pseudo R2{col 67}= {res}    0.0185
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      insure{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Indemnity   {col 14}{txt}{c |}  (base outcome)
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}Prepaid      {txt}{c |}
+{space 4}nonwhite {c |}{col 14}{res}{space 2} .7312659{col 26}{space 2}  .218978{col 37}{space 1}    3.34{col 46}{space 3}0.001{col 54}{space 4}  .302077{col 67}{space 3} 1.160455
+{txt}{space 8}male {c |}{col 14}{res}{space 2} .5739825{col 26}{space 2} .2005221{col 37}{space 1}    2.86{col 46}{space 3}0.004{col 54}{space 4} .1809665{col 67}{space 3} .9669985
+{txt}{space 9}age {c |}{col 14}{res}{space 2}-.0111915{col 26}{space 2} .0060915{col 37}{space 1}   -1.84{col 46}{space 3}0.066{col 54}{space 4}-.0231305{col 67}{space 3} .0007475
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .1567003{col 26}{space 2} .2828509{col 37}{space 1}    0.55{col 46}{space 3}0.580{col 54}{space 4}-.3976773{col 67}{space 3} .7110778
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}Uninsure     {txt}{c |}
+{space 4}nonwhite {c |}{col 14}{res}{space 2} .4333141{col 26}{space 2} .4106255{col 37}{space 1}    1.06{col 46}{space 3}0.291{col 54}{space 4} -.371497{col 67}{space 3} 1.238125
+{txt}{space 8}male {c |}{col 14}{res}{space 2} .5102237{col 26}{space 2} .3639793{col 37}{space 1}    1.40{col 46}{space 3}0.161{col 54}{space 4}-.2031626{col 67}{space 3}  1.22361
+{txt}{space 9}age {c |}{col 14}{res}{space 2}-.0058414{col 26}{space 2} .0114114{col 37}{space 1}   -0.51{col 46}{space 3}0.609{col 54}{space 4}-.0282073{col 67}{space 3} .0165245
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-1.811165{col 26}{space 2} .5348606{col 37}{space 1}   -3.39{col 46}{space 3}0.001{col 54}{space 4}-2.859473{col 67}{space 3}-.7628578
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}.         
+.         ******* Save the dataset in csv format 
+.         
+.         keep patid insure nonwhite male age 
+{txt}
+{com}.         keep if !missing(patid, insure, nonwhite, male, age)
+{txt}(29 observations deleted)
+
+{com}.         label val insure .
+{txt}
+{com}.         export delimited using "sysdsn1_mod.csv", quote replace 
+{res}{txt}file sysdsn1_mod.csv saved
+
+{com}.         
+.         ******* Close log-file
+.         
+.         cap log close mlogit_insurance
+{smcl}
+{com}{sf}{ul off}
