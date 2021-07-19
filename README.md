@@ -17,5 +17,5 @@ A collection of computational methods for conducting research in economics and f
 - Analytical solution to the cake-eating problem: [cake_eating_analytic.ipynb](https://github.com/manuelmontesinos/quant_econ/blob/master/intro_dynamic_programming/cake_eating_analytic.ipynb) (Jupyter Notebook), [prog08_02.jl](https://github.com/montesinosmv/quant_econ/blob/master/intro_dynamic_programming/prog08_02.jl) (Julia).
 
 ## References
-- [Fletcher, R. (1987): "Practical Methods of Optimization", John Wiley & Sons.](https://archive.org/details/practicalmethods0000flet)
 - [Fehr, H., and Kindermann, F. (2018): "Introduction to Computational Economics using Fortran", Oxford University Press.](https://www.ce-fortran.com/)
+- [Fletcher, R. (1987): "Practical Methods of Optimization", John Wiley & Sons.](https://archive.org/details/practicalmethods0000flet)
