@@ -13,7 +13,7 @@
 
 	******* Set path
 
-	cd "/Users/montesinos/Documents/GitHub/quant_econ/maximum_likelihood_estimation/multinomial_logit"
+	cd "/Users/montesinos/Documents/GitHub/quant_econ/discrete_choice/multinomial_logit"
 
 	******* Open log-file
 

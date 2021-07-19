@@ -27,11 +27,11 @@ disp('')
 %% Set paths
 
     % Programs folder
-    programs = '/Users/montesinos/Documents/GitHub/quant_econ/maximum_likelihood_estimation/multinomial_logit';
+    programs = '/Users/montesinos/Documents/GitHub/quant_econ/discrete_choice/multinomial_logit';
     userpath(programs)
 
     % Data folder
-    cleandata = '/Users/montesinos/Documents/GitHub/quant_econ/maximum_likelihood_estimation/multinomial_logit';
+    cleandata = '/Users/montesinos/Documents/GitHub/quant_econ/discrete_choice/multinomial_logit';
     addpath(cleandata)
 
 %% Import the data
