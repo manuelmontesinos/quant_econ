@@ -13,7 +13,7 @@
 
 	******* Set path
 
-	cd "/Users/montesinos/Documents/GitHub/quant_econ/discrete_choice/binary_probit"
+	cd "../quant_econ/discrete_choice/binary_probit"
 
 	******* Open log-file
 
