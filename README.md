@@ -2,7 +2,7 @@
 A collection of computational methods for conducting research in economics and finance. Files included:
 
 ## Discrete Choice Models
-- Estimation of a binary probit model: [BProbit_Car.do](https://github.com/manuelmontesinos/quant_econ/blob/main/discrete_choice/binary_probit/BProbit_Car.do) (Stata), [BProbit_Car.m](https://github.com/manuelmontesinos/quant_econ/blob/main/discrete_choice/binary_probit/BProbit_Car.m) (Matlab).
+- Estimation of a binary probit model: [BProbit_Car.do](https://github.com/manuelmontesinos/quant_econ/blob/main/discrete_choice/binary_probit/BProbit_Car.do) (Stata), [BProbit_Car.m](https://github.com/manuelmontesinos/quant_econ/blob/main/discrete_choice/binary_probit/BProbit_Car.m) (Matlab), [BProbit_Car.py](https://github.com/manuelmontesinos/quant_econ/blob/main/discrete_choice/binary_probit/BProbit_Car.py) (Python).
   - For optimization based on the BFGS algorithm, use this Matlab function to compute the log-likelihood: [bprobit_llike.m](https://github.com/manuelmontesinos/quant_econ/blob/main/discrete_choice/binary_probit/bprobit_llike.m).
   - For optimization based on the Newton-Raphson algorithm, use this Matlab function: [bprobit_nr.m](https://github.com/manuelmontesinos/quant_econ/blob/main/discrete_choice/binary_probit/bprobit_nr.m).
 - Estimation of a multinomial logit model: [mlogit_insurance.do](https://github.com/manuelmontesinos/quant_econ/blob/main/discrete_choice/multinomial_logit/mlogit_insurance.do) (Stata), [mlogit_insurance.m](https://github.com/manuelmontesinos/quant_econ/blob/main/discrete_choice/multinomial_logit/mlogit_insurance.m) (Matlab).
