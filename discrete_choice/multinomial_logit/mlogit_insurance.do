@@ -31,7 +31,7 @@
 
 	******* Estimate the model
 
-	mlogit insure nonwhite male age, baseoutcome(1)
+	mlogit insure age male nonwhite, baseoutcome(1)
 
 	******* Save the dataset in csv format
 
