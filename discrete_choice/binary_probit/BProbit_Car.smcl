@@ -1,9 +1,9 @@
 {smcl}
-{txt}{sf}{ul off}{.-}
+{com}{sf}{ul off}{txt}{.-}
       name:  {res}bprobit_car
-       {txt}log:  {res}/Users/montesinos/Documents/GitHub/quant_econ/discrete_choice/binary_probit/BProbit_Car.smcl
+       {txt}log:  {res}C:\Users\mvm\Dropbox\Mac\Documents\GitHub\quant_econ\discrete_choice\binary_probit\BProbit_Car.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}29 Jul 2021, 12:29:15
+ {txt}opened on:  {res} 2 Jul 2024, 16:15:04
 {txt}
 {com}. 
 .         di " "
@@ -30,20 +30,20 @@
 .         
 .         probit foreign mpg weight
 
-{res}{txt}Iteration 0:{space 3}log likelihood = {res: -45.03321}  
-Iteration 1:{space 3}log likelihood = {res:-27.914626}  
-Iteration 2:{space 3}log likelihood = {res:-26.858074}  
-Iteration 3:{space 3}log likelihood = {res:-26.844197}  
-Iteration 4:{space 3}log likelihood = {res:-26.844189}  
-Iteration 5:{space 3}log likelihood = {res:-26.844189}  
+{res}{txt}Iteration 0:{space 2}Log likelihood = {res: -45.03321}  
+Iteration 1:{space 2}Log likelihood = {res:-27.914626}  
+Iteration 2:{space 2}Log likelihood = {res:-26.858074}  
+Iteration 3:{space 2}Log likelihood = {res:-26.844197}  
+Iteration 4:{space 2}Log likelihood = {res:-26.844189}  
+Iteration 5:{space 2}Log likelihood = {res:-26.844189}  
 {res}
-{txt}Probit regression{col 49}Number of obs{col 67}= {res}        74
-{txt}{col 49}LR chi2({res}2{txt}){col 67}= {res}     36.38
-{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
-{txt}Log likelihood = {res}-26.844189{txt}{col 49}Pseudo R2{col 67}= {res}    0.4039
+{txt}{col 1}Probit regression{col 57}{lalign 13:Number of obs}{col 70} = {res}{ralign 6:74}
+{txt}{col 57}{lalign 13:LR chi2({res:2})}{col 70} = {res}{ralign 6:36.38}
+{txt}{col 57}{lalign 13:Prob > chi2}{col 70} = {res}{ralign 6:0.0000}
+{txt}{col 1}{lalign 14:Log likelihood}{col 15} = {res}{ralign 10:-26.844189}{txt}{col 57}{lalign 13:Pseudo R2}{col 70} = {res}{ralign 6:0.4039}
 
 {txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-{col 1}     foreign{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{col 1}     foreign{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
 {hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {space 9}mpg {c |}{col 14}{res}{space 2}-.1039503{col 26}{space 2} .0515689{col 37}{space 1}   -2.02{col 46}{space 3}0.044{col 54}{space 4}-.2050235{col 67}{space 3}-.0028772
 {txt}{space 6}weight {c |}{col 14}{res}{space 2}-.0023355{col 26}{space 2} .0005661{col 37}{space 1}   -4.13{col 46}{space 3}0.000{col 54}{space 4} -.003445{col 67}{space 3}-.0012261
@@ -58,7 +58,7 @@ Iteration 5:{space 3}log likelihood = {res:-26.844189}
 {com}.         label val foreign .
 {txt}
 {com}.         export delimited using "auto.csv", quote replace        
-{res}{txt}file auto.csv saved
+{res}{txt}file {bf:auto.csv} saved
 
 {com}.         
 .         ******* Close log-file
