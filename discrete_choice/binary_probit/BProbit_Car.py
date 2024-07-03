@@ -185,6 +185,33 @@ print('')
 
 #-------------------------------------------------------------------------------
 
+# Estimate the model using the Powell algorithm in estimagic (gradient-free)
+print('{0:4s}   {1:9s}'.format('Iter', 'f(X)'))
+print('Estimate the model using the Powell algorithm in estimagic: ')
+outmin_em = em.minimize(
+    criterion=bprobit_llike,
+    params=np.zeros(3),
+    algorithm="scipy_powell",
+    criterion_kwargs={"yobs": choice, "xobs": regressors, "info": {'Nfeval':0}}
+)
+
+# Make a plot of the evolution of the criterion function
+fig = em.criterion_plot(outmin_em)
+fig.show()
+
+# Make a plot of the evolution of the parameter estimates
+fig = em.params_plot(outmin_em)
+fig.show()
+
+print('')
+print('Estimation results using estimagic Powell algorithm: ', outmin_em)
+print('Parameter estimates using estimagic Powell algorithm: ', outmin_em.params)
+print('')
+print('-----------------------------------------------------------------------')
+print('')
+
+#-------------------------------------------------------------------------------
+
 # Estimate the model using a dual annealing algorithm. It does not perform 
 # well unless appropriate bounds are provided. Given the same bounds, it does
 # better than differential evolution, although it takes three times more
