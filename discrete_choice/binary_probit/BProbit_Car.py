@@ -141,7 +141,11 @@ print('')
 # The algorithm does not perform well unless appropriate bounds are provided
 info = np.iinfo(np.int64)
 lower_bounds_de = np.array([-1, -1, -10]) 
-upper_bounds_de = np.array([1, 1, 10]) 
+upper_bounds_de = np.array([1, 1, 10])
+
+# Trying with wider bounds, but it does not perform well
+# lower_bounds_de = np.array([-1000, -1000, -1000]) 
+# upper_bounds_de = np.array([1000, 1000, 1000])
 
 print('Estimate the model using the differential evolution algorithm in estimagic: ')
 outmin_em = em.minimize(
@@ -186,6 +190,10 @@ print('')
 # better than differential evolution, although it takes three times more
 # iterations to converge
 bounds_sa = [(-1, 1), (-1, 1), (-10, 10)]
+
+# Trying with wider bounds, but it does not perform well
+# bounds_sa = [(-1000, 1000), (-1000, 1000), (-1000, 1000)]
+
 print('Estimate the model using the dual annealing algorithm in SciPy: ')
 print('{0:4s}   {1:9s}'.format('Iter', 'f(X)'))
 outmin_sa = optimize.dual_annealing(bprobit_llike, bounds_sa, 
