@@ -22,6 +22,7 @@ A collection of computational methods for conducting research in economics and f
 - Social planner solution to the static general equilibrium model: 
   - [planner_static_1.R](static_ge_model/planner_static_1.R) (R).
   - [planner_static_1.py](static_ge_model/planner_static_1.py) (Python).
+  - [planner_static_1.ipynb](static_ge_model/planner_static_1.ipynb) (Jupyter Notebook).
 - Market solution to the static general equilibrium model: 
   - [market_static_1.R](static_ge_model/market_static_1.R) (R).
   - [market_static_1.py](static_ge_model/market_static_1.py) (Python).
