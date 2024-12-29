@@ -29,6 +29,7 @@ A collection of computational methods for conducting research in economics and f
   - [market_static_1.ipynb](static_ge_model/market_static_1.ipynb) (Jupyter Notebook).
 - Market solution to the static general equilibrium model with variable labor supply: 
   - [market_static_labor.py](static_ge_model/market_static_labor.py) (Python).
+  - [market_static_labor.ipynb](static_ge_model/market_static_labor.ipynb) (Jupyter Notebook).
 - Static general equilibrium model with government activity: 
   - [static_ge_government.py](static_ge_model/static_ge_government.py) (Python).
 
