@@ -32,6 +32,7 @@ A collection of computational methods for conducting research in economics and f
   - [market_static_labor.ipynb](static_ge_model/market_static_labor.ipynb) (Jupyter Notebook).
 - Static general equilibrium model with government activity: 
   - [static_ge_government.py](static_ge_model/static_ge_government.py) (Python).
+  - [static_ge_government.ipynb](static_ge_model/static_ge_government.ipynb) (Jupyter Notebook).
 
 ## Introduction to Dynamic Programming
 - All-in-one solution to the cake-eating problem: 

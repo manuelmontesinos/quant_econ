@@ -45,7 +45,7 @@ def markets(x):
     w = x[1]
     r = x[2]
 
-    # Set tax rates (uncomment the line of the tax to endogeneize)
+    # Set tax rates (uncomment respective lines for different results)
     taur = x[3]
     #tauw = -x[3]
     #tauc = np.array([x[3], 0])
