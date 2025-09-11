@@ -1,6 +1,10 @@
 # Quantitative Economics
 A collection of computational methods for conducting research in economics and finance. Files included:
 
+## Optimization Algorithms
+- Genetic algorithm:
+  - [genetic_algorithm_example.py](genetic_algorithm/genetic_algorithm_example.py) (Python).
+
 ## Discrete Choice Models
 - Estimation of a binary logit model: 
   - [BLogit_Car.do](discrete_choice/binary_logit/BLogit_Car.do) (Stata).
@@ -40,7 +44,7 @@ A collection of computational methods for conducting research in economics and f
   - [prog08_01.jl](intro_dynamic_programming/prog08_01.jl) (Julia).
 - Analytical solution to the cake-eating problem: 
   - [cake_eating_analytic.ipynb](intro_dynamic_programming/cake_eating_analytic.ipynb) (Jupyter Notebook).
-  - [prog08_02.jl](intro_dynamic_programming/prog08_02.jl) (Julia).
+  - [prog08_02.jl](intro_dynamic_programming/prog08_02.jl) (Julia).  
 
 ## References
 - [Fehr, H., and Kindermann, F. (2018): "Introduction to Computational Economics using Fortran", Oxford University Press.](https://www.ce-fortran.com/)
