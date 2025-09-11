@@ -38,7 +38,7 @@
 
 	keep foreign weight mpg 
 	label val foreign .
-	export delimited using "auto.csv", quote replace	
+	export delimited using "auto.csv", quote replace
 	
 	******* Close log-file
 
