@@ -13,6 +13,7 @@ A collection of computational methods for conducting research in economics and f
   - [BProbit_Car.do](discrete_choice/binary_probit/BProbit_Car.do) (Stata).
   - [BProbit_Car.m](discrete_choice/binary_probit/BProbit_Car.m) (Matlab).
   - [BProbit_Car.py](discrete_choice/binary_probit/BProbit_Car.py) (Python, using several gradient-free optimization algorithms).
+  - [BProbit_Car.ipynb](discrete_choice/binary_probit/BProbit_Car.ipynb) (Jupyter Notebook, using several gradient-free optimization algorithms).
   - [BProbit_Car_Powell.py](discrete_choice/binary_probit/BProbit_Car_Powell.py).
   - For optimization based on the BFGS algorithm, use this Matlab function to compute the log-likelihood: [bprobit_llike.m](discrete_choice/binary_probit/bprobit_llike.m).
   - For optimization based on the Newton-Raphson algorithm, use this Matlab function: [bprobit_nr.m](discrete_choice/binary_probit/bprobit_nr.m).
