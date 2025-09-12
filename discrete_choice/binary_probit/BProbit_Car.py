@@ -43,18 +43,14 @@ regressors = np.column_stack((mpg, weight, constant))
 
 #-------------------------------------------------------------------------------
 
-# Define lists to store the number of iterations and the value of the objective
-# function
-itlist = []
-llikelist = []
-
 # Initial values of the parameter vector
 b0 = np.zeros(3)
 
 # Estimate the model using the Nelder-Mead algorithm (gradient-free)
 print('Estimate the model using the Nelder-Mead algorithm')
+history = {'Nfeval': 0, 'nfeval': [], 'fval': [], 'params': []}
 print('{0:4s}   {1:9s}'.format('Iter', 'f(X)'))
-outmin = minimize(bprobit_llike, b0, args=(choice, regressors, {'Nfeval':0}), \
+outmin = minimize(bprobit_llike, b0, args=(choice, regressors, history), \
     method='nelder-mead', options={'xatol': 1e-5, 'disp': True, 'return_all': False})
 
 print('')
@@ -70,15 +66,14 @@ print('')
 
 # Estimate the model using Nelder-Mead's estimagic. Install estimagic by following  
 # these instructions: https://estimagic.org/en/latest/getting_started/installation.html
-itlist = []
-llikelist = []
 print('Estimate the model using Nelder-Mead estimagic')
+history = {'Nfeval': 0, 'nfeval': [], 'fval': [], 'params': []}
 print('{0:4s}   {1:9s}'.format('Iter', 'f(X)'))
 outmin_em = em.minimize(
     criterion=bprobit_llike,
     params=np.zeros(3),
     algorithm="scipy_neldermead",
-    criterion_kwargs={"yobs": choice, "xobs": regressors, "info": {'Nfeval':0}}
+    criterion_kwargs={"yobs": choice, "xobs": regressors, "info": history}
 )
 
 print('')
@@ -93,13 +88,12 @@ print('')
 
 # Estimate the model using the differential evolution algorithm in SciPy
 # (gradient-free). It does not perform well 
-itlist = []
-llikelist = []
 bounds_de = [(-1, 1), (-1, 1), (-10, 10)]
 print('Estimate the model using the differential evolution algorithm in SciPy: ')
+history = {'Nfeval': 0, 'nfeval': [], 'fval': [], 'params': []}
 print('{0:4s}   {1:9s}'.format('Iter', 'f(X)'))
 outmin_desp = optimize.differential_evolution(bprobit_llike, bounds_de, 
-    args=(choice, regressors, {'Nfeval':0}))
+    args=(choice, regressors, history))
 
 print('')
 print('Parameter estimates using the differential evolution algorithm in SciPy: ')
@@ -114,8 +108,6 @@ print('')
 
 # Estimate the model using the differential evolution algorithm in estimagic.
 # The algorithm does not perform well unless appropriate bounds are provided
-itlist = []
-llikelist = []
 info = np.iinfo(np.int64)
 lower_bounds_de = np.array([-1, -1, -10]) 
 upper_bounds_de = np.array([1, 1, 10])
@@ -125,11 +117,12 @@ upper_bounds_de = np.array([1, 1, 10])
 # upper_bounds_de = np.array([1000, 1000, 1000])
 
 print('Estimate the model using the differential evolution algorithm in estimagic: ')
+history = {'Nfeval': 0, 'nfeval': [], 'fval': [], 'params': []}
 outmin_em = em.minimize(
     criterion=bprobit_llike,
     params=np.zeros(3),
     algorithm="scipy_differential_evolution",
-    criterion_kwargs={"yobs": choice, "xobs": regressors, "info": {'Nfeval':0}},
+    criterion_kwargs={"yobs": choice, "xobs": regressors, "info": history},
     lower_bounds=lower_bounds_de,
     upper_bounds=upper_bounds_de
 )
@@ -151,13 +144,14 @@ llikelist = []
 # Estimate the model using the Powell algorithm in SciPy (gradient-free). It 
 # performs quite well and takes 434 function evaluations to converge (some more
 # than Nelder-Mead)
-print('{0:4s}   {1:9s}'.format('Iter', 'f(X)'))
 print('Estimate the model using the Powell algorithm in SciPy: ')
-outmin = minimize(bprobit_llike, b0, args=(choice, regressors, {'Nfeval':0}), \
+history = {'Nfeval': 0, 'nfeval': [], 'fval': [], 'params': []}
+print('{0:4s}   {1:9s}'.format('Iter', 'f(X)'))
+outmin = minimize(bprobit_llike, b0, args=(choice, regressors, history), \
     method='Powell', options={'disp': True})
 
 # Plot the values of the criterion function
-plt.plot(itlist, llikelist)
+plt.plot(history['nfeval'], history['fval'], linestyle='-', color='b')
 plt.xlabel('Iterations')
 plt.ylabel('Log-likelihood')
 plt.title('Values of the log-likelihood function (SciPy Powell)')
@@ -175,15 +169,14 @@ print('')
 #-------------------------------------------------------------------------------
 
 # Estimate the model using the Powell algorithm in estimagic (gradient-free)
-itlist = []
-llikelist = []
-print('{0:4s}   {1:9s}'.format('Iter', 'f(X)'))
 print('Estimate the model using the Powell algorithm in estimagic: ')
+history = {'Nfeval': 0, 'nfeval': [], 'fval': [], 'params': []}
+print('{0:4s}   {1:9s}'.format('Iter', 'f(X)'))
 outmin_em = em.minimize(
     criterion=bprobit_llike,
     params=np.zeros(3),
     algorithm="scipy_powell",
-    criterion_kwargs={"yobs": choice, "xobs": regressors, "info": {'Nfeval':0}}
+    criterion_kwargs={"yobs": choice, "xobs": regressors, "info": history}
 )
 
 # Make a plot of the evolution of the criterion function
@@ -207,23 +200,48 @@ print('')
 # well unless appropriate bounds are provided. Given the same bounds, it does
 # better than differential evolution, although it takes three times more
 # iterations to converge
-itlist = []
-llikelist = []
+
 bounds_sa = [(-1, 1), (-1, 1), (-10, 10)]
 
 # Trying with wider bounds, but it does not perform well
 # bounds_sa = [(-1000, 1000), (-1000, 1000), (-1000, 1000)]
 
 print('Estimate the model using the dual annealing algorithm in SciPy: ')
+history = {'Nfeval': 0, 'nfeval': [], 'fval': [], 'params': []}
 print('{0:4s}   {1:9s}'.format('Iter', 'f(X)'))
 outmin_sa = optimize.dual_annealing(bprobit_llike, bounds_sa, 
-    args=(choice, regressors, {'Nfeval':0}))
+    args=(choice, regressors, history))
 
 print('')
 print('Parameter estimates using a dual annealing algorithm: ')
 print('mpg:    ', outmin_sa.x[0])
 print('weight: ', outmin_sa.x[1])
 print('cons:   ', outmin_sa.x[2])
+print('')
+print('-----------------------------------------------------------------------')
+print('')
+
+#-------------------------------------------------------------------------------
+
+# Estimate the model using the L-BFGS-B algorithm in SciPy
+print('Estimate the model using the L-BFGS-B algorithm in SciPy: ')
+history = {'Nfeval': 0, 'nfeval': [], 'fval': [], 'params': []}
+print('{0:4s}   {1:9s}'.format('Iter', 'f(X)'))
+outmin = minimize(bprobit_llike, b0, args=(choice, regressors, history), \
+    method='L-BFGS-B', options={'disp': True})
+
+# Plot the values of the criterion function
+plt.plot(history['nfeval'], history['fval'], linestyle='-', color='b')
+plt.xlabel('Iterations')
+plt.ylabel('Log-likelihood')
+plt.title('Values of the log-likelihood function (SciPy L-BFGS-B)')
+plt.show()
+
+print('')
+print('Parameter estimates using SciPy L-BFGS-B algorithm: ')
+print('mpg:    ', outmin.x[0])
+print('weight: ', outmin.x[1])
+print('cons:   ', outmin.x[2])
 print('')
 print('-----------------------------------------------------------------------')
 print('')
