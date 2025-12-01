@@ -2,11 +2,11 @@
 import numpy as np 
 
 # Import functions written for the project
-from mslgradient import mslgradient
+from mlgradient import mlgradient
 
 # Define a function to compute the Hessian matrix for maximum likelihood 
 # estimation
-def mslhessian(betas, fargs, f):
+def mlhessian(betas, fargs, f):
     '''
     ----------------------------------------------------------------------------
     FUNCTION: Compute the Hessian matrix of numerical second derivatives for
@@ -25,7 +25,7 @@ def mslhessian(betas, fargs, f):
     - hessianmat <- (k-by-k) Hessian matrix of second derivatives.
 
     CALLS:
-    - mslgradient <- function that computes the gradient vector.
+    - mlgradient <- function that computes the gradient vector.
     ----------------------------------------------------------------------------
     '''
 
@@ -36,7 +36,7 @@ def mslhessian(betas, fargs, f):
     hessianmat = np.zeros((K,K))
 
     # Initial value of the gradient
-    gd_0 = mslgradient(betas, fargs, f)
+    gd_0 = mlgradient(betas, fargs, f)
 
     for kk in range(K):
 
@@ -44,7 +44,7 @@ def mslhessian(betas, fargs, f):
         eps = abs(betas[kk]) * 1e-5
         betas0 = 1. * betas[kk]
         betas[kk] = betas0 + eps
-        gd_1 = mslgradient(betas, fargs, f)
+        gd_1 = mlgradient(betas, fargs, f)
         hessianmat[:,kk] = ((gd_1 - gd_0) / eps).reshape(betas.shape[0])
         betas[kk] = betas0
         print('2nd derivative computed for parameter: ', kk)

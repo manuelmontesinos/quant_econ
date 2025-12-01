@@ -2,7 +2,7 @@
 import numpy as np
 
 # Define a function to compute the gradient for maximum likelihood estimation
-def mslgradient(betas, fargs, f):
+def mlgradient(betas, fargs, f):
     '''
     ----------------------------------------------------------------------------
     FUNCTION: Compute the gradient vector of numerical first derivatives for

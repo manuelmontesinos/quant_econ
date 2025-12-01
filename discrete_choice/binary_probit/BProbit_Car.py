@@ -19,7 +19,8 @@ import matplotlib.pyplot as plt
 
 from bprobit_llike import bprobit_llike
 from mlcrit_vargs import mlcrit_vargs
-from mslhessian import mslhessian
+from mlhessian import mlhessian
+from mlgradient import mlgradient
 from scipy import stats
 from scipy import optimize
 from scipy.optimize import minimize
@@ -44,10 +45,10 @@ weight = auto['weight'].to_numpy()
 constant = np.ones(len(choice))
 regressors = np.column_stack((mpg, weight, constant))
 
-#-------------------------------------------------------------------------------
-
 # Initial values of the parameter vector
 b0 = np.zeros(3)
+
+#-------------------------------------------------------------------------------
 
 # Estimate the model using the Nelder-Mead algorithm (gradient-free)
 print('Estimate the model using the Nelder-Mead algorithm')
@@ -244,7 +245,7 @@ plt.show()
 # Compute the standard errors by inverting the Hessian matrix and taking
 # square roots of the diagonal elements
 ml_args = (choice, regressors)
-hess = mslhessian(estcoefs, ml_args, mlcrit_vargs)
+hess = mlhessian(estcoefs, ml_args, mlcrit_vargs)
 invhess = np.linalg.inv(hess)
 std_errors = np.sqrt(np.diag(invhess))
 
@@ -256,3 +257,9 @@ print(f"cons:   {outmin.x[2]:.4f} ({std_errors[2]:.4f})")
 print('')
 print('-----------------------------------------------------------------------')
 print('')
+
+# Norm of the gradient at the estimates (should be close to zero)
+grad = mlgradient(estcoefs, ml_args, mlcrit_vargs)
+print("Gradient at the estimates:", grad)
+norm_grad = np.linalg.norm(grad)
+print("Gradient norm at the estimates:", norm_grad)
