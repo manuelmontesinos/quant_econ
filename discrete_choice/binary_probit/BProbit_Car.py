@@ -16,7 +16,10 @@ import numpy as np
 import pandas as pd
 import estimagic as em
 import matplotlib.pyplot as plt
+
 from bprobit_llike import bprobit_llike
+from mlcrit_vargs import mlcrit_vargs
+from mslhessian import mslhessian
 from scipy import stats
 from scipy import optimize
 from scipy.optimize import minimize
@@ -179,13 +182,13 @@ outmin_em = em.minimize(
     criterion_kwargs={"yobs": choice, "xobs": regressors, "info": history}
 )
 
-# Make a plot of the evolution of the criterion function
-fig = em.criterion_plot(outmin_em)
-fig.show()
+# # Make a plot of the evolution of the criterion function
+# fig = em.criterion_plot(outmin_em)
+# fig.show()
 
-# Make a plot of the evolution of the parameter estimates
-fig = em.params_plot(outmin_em)
-fig.show()
+# # Make a plot of the evolution of the parameter estimates
+# fig = em.params_plot(outmin_em)
+# fig.show()
 
 print('')
 print('Estimation results using estimagic Powell algorithm: ', outmin_em)
@@ -229,6 +232,7 @@ history = {'Nfeval': 0, 'nfeval': [], 'fval': [], 'params': []}
 print('{0:4s}   {1:9s}'.format('Iter', 'f(X)'))
 outmin = minimize(bprobit_llike, b0, args=(choice, regressors, history), \
     method='L-BFGS-B', options={'disp': True})
+estcoefs = outmin.x
 
 # Plot the values of the criterion function
 plt.plot(history['nfeval'], history['fval'], linestyle='-', color='b')
@@ -237,11 +241,18 @@ plt.ylabel('Log-likelihood')
 plt.title('Values of the log-likelihood function (SciPy L-BFGS-B)')
 plt.show()
 
+# Compute the standard errors by inverting the Hessian matrix and taking
+# square roots of the diagonal elements
+ml_args = (choice, regressors)
+hess = mslhessian(estcoefs, ml_args, mlcrit_vargs)
+invhess = np.linalg.inv(hess)
+std_errors = np.sqrt(np.diag(invhess))
+
 print('')
-print('Parameter estimates using SciPy L-BFGS-B algorithm: ')
-print('mpg:    ', outmin.x[0])
-print('weight: ', outmin.x[1])
-print('cons:   ', outmin.x[2])
+print('Parameter estimates and standard errors using SciPy L-BFGS-B algorithm: ')
+print(f"mpg:    {outmin.x[0]:.4f} ({std_errors[0]:.4f})")
+print(f"weight: {outmin.x[1]:.4f} ({std_errors[1]:.4f})")
+print(f"cons:   {outmin.x[2]:.4f} ({std_errors[2]:.4f})")
 print('')
 print('-----------------------------------------------------------------------')
 print('')
